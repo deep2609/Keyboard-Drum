@@ -5,12 +5,14 @@ for (var i = 0; i < numOfButtons; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
     var key = this.innerHTML;
     sound(key);
+    buttonAnimation(key);
   });
 }
 // To produce sound on key press
 document.addEventListener("keypress",function(event){
    var k=event.key;
    sound(k);
+  buttonAnimation(k);
  });
 
 
@@ -46,3 +48,11 @@ function sound(key){
   }
 }
 
+// Button Animation when key is pressed
+
+function buttonAnimation(key){
+  document.querySelector("."+key).classList.add("pressed");
+  setTimeout(function () {
+    document.querySelector("."+key).classList.remove("pressed");
+  }, 100);
+}
